@@ -1,0 +1,187 @@
+/* Style global pour le tableau de bord de l'administrateur */
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.admin-dashboard-container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #333;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.back-button {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    font-size: 1rem;
+}
+
+.back-button:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.room-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-table th,
+.room-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.room-table th {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.room-table td {
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 1rem;
+}
+
+.room-table tr:hover td {
+    background-color: #f1f1f1;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    transform: translateY(-3px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .admin-dashboard-container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .back-button {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+
+    .room-table th, .room-table td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .admin-dashboard-container {
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .back-button {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .room-table th, .room-table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .admin-dashboard-container {
+        padding: 8px;
+        box-shadow: none;
+    }
+
+    .back-button {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+    }
+
+    .room-table th, .room-table td {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+
+    .delete-button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+}

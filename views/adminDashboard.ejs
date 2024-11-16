@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Administration des Rooms</title>
+    <link rel="stylesheet" href="/css/adminDashboard.css">
+</head>
+<body>
+    <div class="admin-dashboard-container">
+        <header>
+            <h1>⚙️ Administration des Rooms</h1>
+            <a href="/dashboard" class="back-button">⬅️ Retour au tableau de bord</a>
+        </header>
+
+        <table class="room-table">
+            <thead>
+                <tr>
+                    <th>📛 Nom de la Room</th>
+                    <th>👤 Créateur</th>
+                    <th>⚙️ Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% rooms.forEach(room => { %>
+                    <tr>
+                        <td><%= room.name %></td>
+                        <td><%= room.creator.username %></td>
+                        <td>
+                            <form action="/rooms/<%= room._id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit" class="delete-button" onclick="return confirm('Voulez-vous vraiment supprimer cette room ?');">🗑️ Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

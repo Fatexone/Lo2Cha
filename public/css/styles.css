@@ -1,0 +1,158 @@
+/* Styles de base et généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mise en page de base */
+header, footer {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+header h1, footer p {
+    margin: 0;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Liens globaux */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Boutons généraux */
+.button {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Formulaires */
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+/* Styles des messages */
+.message {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.message.self {
+    background-color: #d1e7dd;
+    align-self: flex-end;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    header, footer {
+        padding: 1rem 1.5rem;
+    }
+
+    .button {
+        font-size: 0.95rem;
+        padding: 0.65rem 1.2rem;
+    }
+
+    nav a {
+        font-size: 0.95rem;
+        margin: 0 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header, footer {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 0.5rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        margin: 0 0.5rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header, footer {
+        padding: 0.75rem;
+    }
+
+    header h1, footer p {
+        font-size: 1.2rem;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        margin: 0 0.3rem;
+    }
+
+    .button {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .message {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}

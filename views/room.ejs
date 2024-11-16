@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= room.name %> - Chat Room</title>
+
+    <!-- Liens CSS -->
+    <link rel="stylesheet" href="/css/room.css">
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js" defer></script>
+</head>
+<body>
+    <div class="room-container">
+        <header>
+            <h1>💬 <%= room.name %> 💬</h1>
+            <p><%= room.description %> 📢</p>
+            <a href="/dashboard" class="button">Retour au tableau de bord</a>
+
+            <% if (user && (user._id.equals(room.creator._id) || user.role === 'admin')) { %>
+                <form action="/rooms/<%= room._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette room ?');">
+                    <button type="submit" class="delete-button" aria-label="Supprimer la Room">🗑️ Supprimer la Room</button>
+                </form>
+            <% } %>
+        </header>
+
+        <main>
+            <!-- Liste des messages -->
+            <ul id="messages"></ul>
+
+            <!-- Formulaire de chat -->
+            <form id="chatForm">
+                <div class="chat-input-container">
+                    <input id="msgInput" type="text" autocomplete="off" placeholder="Tapez votre message ici... ✍️" />
+                    <button type="submit" aria-label="Envoyer le message">Envoyer 🚀</button>
+                </div>
+                <!-- Émojis courants directement visibles -->
+                <div id="emoji-container">
+                    <!-- Les émojis sont injectés dynamiquement -->
+                </div>
+            </form>
+        </main>
+
+        <!-- Champs cachés pour transmettre roomId et userId -->
+        <input type="hidden" id="roomId" value="<%= room._id %>">
+        <input type="hidden" id="userId" value="<%= user._id %>">
+    </div>
+</body>
+</html>

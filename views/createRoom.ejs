@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer une Room</title>
+    <link rel="stylesheet" href="/css/createRoom.css">
+</head>
+<body>
+    <div class="create-room-container">
+        <h1>✨ Créer une Nouvelle Room ✨</h1>
+        <form id="createRoomForm" action="/rooms/create" method="POST">
+            <label for="name">🏷️ Nom de la Room</label>
+            <input type="text" id="name" name="name" placeholder="Entrez le nom de la room" required>
+
+            <label for="description">📝 Description</label>
+            <textarea id="description" name="description" placeholder="Entrez une description"></textarea>
+
+            <label class="private-room-label">
+                <input type="checkbox" name="isPrivate" id="isPrivate">
+                🔒 Room Privée
+            </label>
+
+            <!-- Champ mot de passe pour les rooms privées, caché par défaut -->
+            <div id="passwordField" style="display: none;">
+                <label for="password">🔑 Mot de Passe</label>
+                <input type="password" id="password" name="password" placeholder="Définissez un mot de passe">
+            </div>
+
+            <button type="submit">🚀 Créer la Room</button>
+        </form>
+        <a href="/dashboard" class="back-button">⬅️ Retour au tableau de bord</a>
+    </div>
+
+    <!-- Inclusion du fichier JavaScript externe -->
+    <script src="/js/createRoom.js"></script>
+</body>
+</html>

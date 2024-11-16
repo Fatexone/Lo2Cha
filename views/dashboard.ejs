@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>👋 Bienvenue, <%= user.username %>!</h1>
+        <nav>
+            <a href="/rooms/create" class="button">➕ Créer une room</a>
+            <a href="/auth/logout" class="button logout">🚪 Se déconnecter</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>💬 Rooms disponibles</h2>
+        <% if (rooms.length > 0) { %>
+            <ul class="room-list">
+                <% rooms.forEach(room => { %>
+                    <li class="room-item">
+                        <div class="room-details">
+                            <h3>📌 <a href="/rooms/<%= room._id %>"><%= room.name %></a></h3>
+                            <p><%= room.description %></p>
+                            <p><strong>Privé :</strong> <%= room.isPrivate ? '🔒 Oui' : '🌐 Non' %></p>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+
+            <div id="map"
+            data-mapbox-token="<%= process.env.MAPBOX_ACCESS_TOKEN %>"
+            data-rooms='<%- JSON.stringify(rooms.map(room => ({
+                name: room.name,
+                location: room.location
+            }))) %>'
+            style="width: 100%; height: 500px;">
+       </div>
+       
+
+        <% } else { %>
+            <p>Aucune room disponible pour le moment.</p>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> ChatApp. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Script Mapbox -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+
+    <!-- Script personnalisé pour l'initialisation de la carte -->
+    <script src="/js/mapSetup.js"></script>
+</body>
+</html>
